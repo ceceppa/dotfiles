@@ -1,0 +1,42 @@
+snippet jest
+	describe('${1}', () => {
+		it('${2}', async () => {
+			${3}
+		});
+	});
+
+snippet jit
+	it('${1}', async () => {
+		${2}
+	});
+
+snippet ur
+	const ${1} = React.useRef(${2})
+
+snippet us
+	const [${1}, set${2}${1}] = React.useState(${3})
+
+snippet ue
+	React.useEffect(() =>{
+		${1}
+	}, []);
+
+snippet info
+	console.info(${1})
+
+snippet hook
+	import * as React from 'react';
+
+	type ${1}Props = {};
+
+	export const ${1} = ({}: ${1}Props) => {
+	  ${2}
+
+	  return {
+  	  };
+	};
+
+snippet fn
+	export const ${1} = () => {
+		${2}
+	}
