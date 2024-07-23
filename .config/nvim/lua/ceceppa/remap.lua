@@ -101,7 +101,7 @@ vim.api.nvim_set_keymap('n', '<leader>w=', ':vertical resize 120<CR>',
     { noremap = true, desc = '@: Equalize windows vertical size' })
 vim.api.nvim_set_keymap('n', '<leader>wv', '<C-w>v', { noremap = true, desc = '@: Equalize windows vertical size' })
 vim.api.nvim_set_keymap('n', '<C-n>', '<C-w>w', { noremap = true, desc = '@: Focus next window' })
-vim.api.nvim_set_keymap('n', '<C-S-n>', '<C-w>W', { noremap = true, desc = '@: Focus previous window' })
+vim.api.nvim_set_keymap('n', '<C-p>', '<C-w>W', { noremap = true, desc = '@: Focus previous window' })
 vim.keymap.set("n", "<C-f><C-f>", vim.lsp.buf.format, { desc = '@: Format file' })
 vim.keymap.set("i", "<C-f><C-f>", vim.lsp.buf.format, { desc = '@: Format file' })
 vim.keymap.set("n", "<C-f><C-j>", ':%!jq .', { desc = '@: Format JSON file' })
