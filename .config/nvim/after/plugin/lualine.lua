@@ -169,7 +169,7 @@ local function check_is_git_repo()
                     callback = function()
                         vim.defer_fn(function()
                             git_status()
-                        end, 500)
+                        end, TIMEOUT)
                     end,
                 })
             end, 500)
@@ -182,7 +182,6 @@ local function check_is_git_repo()
     end, true)
 end
 
-check_is_git_repo()
 
 -- update git status on project open
 -- couldn't make it work using autocmd and DirChanged event
@@ -208,8 +207,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     end,
 })
 
-update_unsaved_buffers()
-
 local function inlay_hints_status()
     local is_enabled = vim.lsp.inlay_hint.is_enabled()
 
@@ -222,7 +219,7 @@ local function inlay_hints_status()
     return label .. '🕵️ Enabled '
 end
 
-local custom_diagnostics = nil
+local custom_diagnostics = HOURGLASSES[1]
 local hourglass = 1
 local bufnr_name_map = {}
 
@@ -240,15 +237,17 @@ local function update_diagnostics()
 
     for _, value in ipairs(all_diagnostics) do
         local filename = value.filename
-
+        -- tsc returns filname with relative path
+        local is_in_current_project = filename:find(vim.fn.getcwd(), 1, true) ~= nil or
+            string.sub(filename, 1, 1) ~= '/'
         -- ignore warnings from files outside the project
         -- this can happen when switching between projects
-        if filename:find(vim.fn.getcwd(), 1, true) ~= nil then
-            if value.severity == vim.diagnostic.severity.ERROR or value.type:upper() == 'ERROR' or value.type:upper() == "E" then
+        if is_in_current_project then
+            if value.severity == vim.diagnostic.severity.ERROR or value.type:upper() == 'ERROR' then
                 values.errors = values.errors + 1
             elseif value.severity == vim.diagnostic.severity.WARN or value.type:upper() == 'WARN' then
                 values.warnings = values.warnings + 1
-            elseif value.severity == vim.diagnostic.severity.INFO or value.type:upper() == 'INFO' then
+            else
                 values.info = values.info + 1
             end
         end
@@ -325,7 +324,11 @@ local function get_current_diagnostic_value()
     end
 end
 
-update_diagnostics()
+vim.defer_fn(function()
+    update_diagnostics()
+    update_unsaved_buffers()
+    check_is_git_repo()
+end, 1000)
 
 require('lualine').setup {
     options = {
