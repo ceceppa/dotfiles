@@ -164,18 +164,18 @@ return require('packer').startup(function(use)
 
     use 'stephpy/vim-php-cs-fixer'
 
-    use {
-        "LintaoAmons/bookmarks.nvim",
-        tag = "v0.5.3",
-        config = function()
-            require("bookmarks").setup({
-                json_db_path = vim.fs.normalize(vim.fn.stdpath("config") .. "/bookmarks.db.json"),
-                signs = {
-                    mark = { icon = "", color = "grey" },
-                },
-            })
-        end
-    }
+    -- use {
+    --     "LintaoAmons/bookmarks.nvim",
+    --     tag = "v0.5.3",
+    --     config = function()
+    --         require("bookmarks").setup({
+    --             json_db_path = vim.fs.normalize(vim.fn.stdpath("config") .. "/bookmarks.db.json"),
+    --             signs = {
+    --                 mark = { icon = "", color = "grey" },
+    --             },
+    --         })
+    --     end
+    -- }
 
     use {
         'gbprod/phpactor.nvim',
@@ -217,6 +217,7 @@ return require('packer').startup(function(use)
     }
 
     use '~/Projects/projects.nvim'
+    use 'vim-test/vim-test'
 
     vim.keymap.set('n', '<leader>ps', ':so<CR>:PackerSync<CR>')
 end)

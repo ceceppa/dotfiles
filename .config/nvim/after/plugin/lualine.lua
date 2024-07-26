@@ -204,7 +204,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     callback = function()
         vim.defer_fn(function()
             update_unsaved_buffers()
-        end, 500)
+        end, 100)
     end,
 })
 
@@ -244,7 +244,7 @@ local function update_diagnostics()
         -- ignore warnings from files outside the project
         -- this can happen when switching between projects
         if filename:find(vim.fn.getcwd(), 1, true) ~= nil then
-            if value.severity == vim.diagnostic.severity.ERROR or value.type:upper() == 'ERROR' then
+            if value.severity == vim.diagnostic.severity.ERROR or value.type:upper() == 'ERROR' or value.type:upper() == "E" then
                 values.errors = values.errors + 1
             elseif value.severity == vim.diagnostic.severity.WARN or value.type:upper() == 'WARN' then
                 values.warnings = values.warnings + 1

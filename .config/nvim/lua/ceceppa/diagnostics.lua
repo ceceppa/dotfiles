@@ -74,13 +74,20 @@ local function add_diagnostic_entries(diagnostics, values)
 
     for _, d in ipairs(diagnostics) do
         if not diagnostic_exists(d, values) then
+
+            local type = d.type
+
+            if type == "E" then
+                type = "ERROR"
+            end
+
             table.insert(values, {
                 bufnr = 0,
                 filename = d.filename,
                 lnum = d.lnum,
                 col = d.col,
                 text = d.text,
-                type = d.type,
+                type = type,
                 severity = d.severity or severities[1],
                 source = d.source,
             })
@@ -214,5 +221,4 @@ vim.keymap.set('n', '<leader>e', ':DiagnosticsShow<CR>', { desc = '@: Show error
 
 return {
     get_diagnostics = get_diagnostics
-
 }

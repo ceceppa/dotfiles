@@ -101,12 +101,6 @@ _G.packer_plugins = {
     path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/auto-session",
     url = "https://github.com/rmagatti/auto-session"
   },
-  ["bookmarks.nvim"] = {
-    config = { "\27LJ\2\n\2\0\0\b\0\16\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\n\0006\3\3\0009\3\4\0039\3\5\0036\5\3\0009\5\6\0059\5\a\5'\a\b\0B\5\2\2'\6\t\0&\5\6\5B\3\2\2=\3\v\0025\3\r\0005\4\f\0=\4\14\3=\3\15\2B\0\2\1K\0\1\0\nsigns\tmark\1\0\1\tmark\0\1\0\2\ncolor\tgrey\ticon\bï‚—\17json_db_path\1\0\2\17json_db_path\0\nsigns\0\23/bookmarks.db.json\vconfig\fstdpath\afn\14normalize\afs\bvim\nsetup\14bookmarks\frequire\0" },
-    loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/bookmarks.nvim",
-    url = "https://github.com/LintaoAmons/bookmarks.nvim"
-  },
   ["bufdelete.nvim"] = {
     loaded = true,
     path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/bufdelete.nvim",
@@ -359,6 +353,11 @@ _G.packer_plugins = {
     path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
+  ["vim-test"] = {
+    loaded = true,
+    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/vim-test",
+    url = "https://github.com/vim-test/vim-test"
+  },
   ["which-key.nvim"] = {
     config = { "\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0" },
     loaded = true,
@@ -368,38 +367,34 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: ts-error-translator.nvim
-time([[Config for ts-error-translator.nvim]], true)
-try_loadstring("\27LJ\2\nE\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\24ts-error-translator\frequire\0", "config", "ts-error-translator.nvim")
-time([[Config for ts-error-translator.nvim]], false)
--- Config for: indent-blankline.nvim
-time([[Config for indent-blankline.nvim]], true)
-try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bibl\frequire\0", "config", "indent-blankline.nvim")
-time([[Config for indent-blankline.nvim]], false)
--- Config for: bookmarks.nvim
-time([[Config for bookmarks.nvim]], true)
-try_loadstring("\27LJ\2\n\2\0\0\b\0\16\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\n\0006\3\3\0009\3\4\0039\3\5\0036\5\3\0009\5\6\0059\5\a\5'\a\b\0B\5\2\2'\6\t\0&\5\6\5B\3\2\2=\3\v\0025\3\r\0005\4\f\0=\4\14\3=\3\15\2B\0\2\1K\0\1\0\nsigns\tmark\1\0\1\tmark\0\1\0\2\ncolor\tgrey\ticon\bï‚—\17json_db_path\1\0\2\17json_db_path\0\nsigns\0\23/bookmarks.db.json\vconfig\fstdpath\afn\14normalize\afs\bvim\nsetup\14bookmarks\frequire\0", "config", "bookmarks.nvim")
-time([[Config for bookmarks.nvim]], false)
--- Config for: comment.nvim
-time([[Config for comment.nvim]], true)
-try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "comment.nvim")
-time([[Config for comment.nvim]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-try_loadstring("\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
-time([[Config for which-key.nvim]], false)
 -- Config for: aerial.nvim
 time([[Config for aerial.nvim]], true)
 try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vaerial\frequire\0", "config", "aerial.nvim")
 time([[Config for aerial.nvim]], false)
--- Config for: lint.nvim
-time([[Config for lint.nvim]], true)
-try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tlint\frequire\0", "config", "lint.nvim")
-time([[Config for lint.nvim]], false)
 -- Config for: auto-session
 time([[Config for auto-session]], true)
 try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17auto-session\frequire\0", "config", "auto-session")
 time([[Config for auto-session]], false)
+-- Config for: lint.nvim
+time([[Config for lint.nvim]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tlint\frequire\0", "config", "lint.nvim")
+time([[Config for lint.nvim]], false)
+-- Config for: indent-blankline.nvim
+time([[Config for indent-blankline.nvim]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bibl\frequire\0", "config", "indent-blankline.nvim")
+time([[Config for indent-blankline.nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+try_loadstring("\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
+time([[Config for which-key.nvim]], false)
+-- Config for: ts-error-translator.nvim
+time([[Config for ts-error-translator.nvim]], true)
+try_loadstring("\27LJ\2\nE\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\24ts-error-translator\frequire\0", "config", "ts-error-translator.nvim")
+time([[Config for ts-error-translator.nvim]], false)
+-- Config for: comment.nvim
+time([[Config for comment.nvim]], true)
+try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "comment.nvim")
+time([[Config for comment.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-lspconfig ]]
