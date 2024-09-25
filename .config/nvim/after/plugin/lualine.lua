@@ -1,5 +1,4 @@
 local utils = require('ceceppa.utils')
-local projects = require('projects')
 local lint = require('lint')
 local diagnostics = require('ceceppa.diagnostics')
 local TIMEOUT = 3000
@@ -402,7 +401,7 @@ require('lualine').setup {
             {
                 function()
                     -- project status & path
-                    local project_icon = projects.is_project() and '󰐯 ' or '󱠎 '
+                    local project_icon = '󰐯 '
                     return project_icon .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
                 end,
                 separator = {

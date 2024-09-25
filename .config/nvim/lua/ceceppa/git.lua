@@ -33,20 +33,29 @@ function get_commit_message()
     return { input, original_input }
 end
 
-local function get_push_params(input)
+local function get_push_or_commit_params(input, can_force)
     local git_params = { 'push' }
 
     if not input then
         return git_params
     end
 
-    if input:sub(1, 1) == '!' then
+    if input:sub(1, 1) == '!' and can_force then
         table.insert(git_params, '--force')
     elseif input:sub(1, 1) == '~' then
+        if not can_force then
+            return '--no-verify'
+        end
+
         table.insert(git_params, '--no-verify')
     elseif input:sub(1, 1) == '?' then
         table.insert(git_params, '--no-verify')
-        table.insert(git_params, '--force')
+
+        if can_force then
+            table.insert(git_params, '--force')
+        else
+            return '--no-verify'
+        end
     end
 
     return git_params
@@ -73,36 +82,55 @@ function git_pull(description, args)
 end
 
 function git_push(input)
-    local push_params = get_push_params(input)
+    local push_params = get_push_or_commit_params(input, true)
 
     execute_git_command('push', push_params)
+end
+
+function git_get_main_repo_name()
+    -- os shell command
+    local command = [[git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@']]
+    local repo_name = vim.fn.system(command)
+
+    repo_name = repo_name:gsub("^%s*(.-)%s*$", "%1")
+
+    return repo_name
 end
 
 vim.keymap.set('n', '<leader>gi', function() git_pull() end, { desc = '@: Git pull' });
 vim.keymap.set('n', '<leader>go', function() git_push() end, { desc = '@: Git push' });
 vim.keymap.set('n', '<leader>gO', function() git_push('~') end, { desc = '@: Git push --no-verify' });
 vim.keymap.set('n', '<leader>gF', function() git_push('?') end, { desc = '@: Git push --force --no-verify' });
+vim.keymap.set('n', '<leader>gr', function()
+    local repo_name = git_get_main_repo_name()
+
+    execute_git_command('pull rebase ' .. repo_name, { 'pull', 'rebase', repo_name })
+end, { desc = '@: Git pull origin main branch' });
 vim.keymap.set('n', '<leader>gu', function()
-        git_pull('pull origin/main', { 'origin', 'main' })
-    end,
-    { desc = '@: Git pull origin main' });
+    local repo_name = git_get_main_repo_name()
+
+    git_pull('pull origin ' .. repo_name, { 'origin', repo_name })
+end, { desc = '@: Git pull origin main branch' });
 vim.keymap.set('n', '<leader>gn', ':G checkout -b ', { desc = '@: Git checkout new branch' });
 vim.keymap.set('n', '<leader>gd', ':GitGutterDiff<cr>', { desc = '@: Git diff' });
 vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { desc = '@: Git status' });
 vim.keymap.set('n', '<leader>gf', function() execute_git_command('fetch', { 'fetch', '-a' }) end,
     { desc = '@: Git fetch' });
 vim.keymap.set('n', '<leader>gm', function()
-    execute_git_command('checkout main', { 'checkout', 'main' }, function()
+    local repo_name = git_get_main_repo_name()
+
+    execute_git_command('checkout ' .. repo_name, { 'checkout', repo_name }, function()
         git_pull()
     end)
-end, { desc = '@: Git checkout main' });
+end, { desc = '@: Git checkout main branch' });
 vim.keymap.set('n', '<leader>gv', ':Gvdiffsplit!<CR>', { desc = '@: Git diff' });
 
 vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>', { desc = '@: Open LazyGit' });
 vim.keymap.set('n', '<leader>gh', ':LazyGitFilterCurrentFile<CR>', { desc = '@: Git file history' });
 vim.keymap.set('n', '<leader>gl', ':LazyGitFilter<CR>', { desc = '@: Git history' });
 vim.keymap.set('n', '<leader>gr', function()
-    local command = [[!git remote -v | head -n 1 | awk -F "@" '{print $2}' | awk -F " " '{print $1}' | sed 's/:/\//g' | sed 's/.git//g' | awk '{print "http://"$1}' | xargs open]]
+    local command =
+    [[!git remote -v | head -n 1 | awk -F "@" '{print $2}' | awk -F " " '{print $1}' | sed 's/:/\//g' | sed 's/.git//g' | awk '{print "http://"$1}' | xargs open]]
     vim.cmd(command)
 end, { desc = '@: Git open remote repository in Browser' });
 
@@ -148,7 +176,9 @@ local function maybe_write_and_close_window()
 
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-o>:wq<CR>', true, true, true), 'n', true)
 
-        execute_git_command("commit with message", { 'commit', '-m', input[1] },
+        local extra_params = get_push_or_commit_params(input[2], false)
+
+        execute_git_command("commit with message", { 'commit', '-m', input[1], extra_params },
             function()
                 git_push(input[2])
             end)

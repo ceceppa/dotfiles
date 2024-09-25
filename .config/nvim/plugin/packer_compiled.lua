@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/ipad/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?.lua;/Users/ipad/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?/init.lua;/Users/ipad/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?.lua;/Users/ipad/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/ipad/.cache/nvim/packer_hererocks/2.1.1720049189/lib/lua/5.1/?.so"
+local package_path_str = "/Users/alessandro.senese/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?.lua;/Users/alessandro.senese/.cache/nvim/packer_hererocks/2.1.1713484068/share/lua/5.1/?/init.lua;/Users/alessandro.senese/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?.lua;/Users/alessandro.senese/.cache/nvim/packer_hererocks/2.1.1713484068/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/alessandro.senese/.cache/nvim/packer_hererocks/2.1.1713484068/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -76,117 +76,117 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   LuaSnip = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/LuaSnip",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   ["aerial.nvim"] = {
     config = { "\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vaerial\frequire\0" },
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/aerial.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/aerial.nvim",
     url = "https://github.com/stevearc/aerial.nvim"
   },
   ale = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/ale",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/ale",
     url = "https://github.com/dense-analysis/ale"
   },
   ["auto-pairs"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
   ["auto-session"] = {
     config = { "\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17auto-session\frequire\0" },
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/auto-session",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/auto-session",
     url = "https://github.com/rmagatti/auto-session"
   },
   ["bufdelete.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/bufdelete.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/bufdelete.nvim",
     url = "https://github.com/famiu/bufdelete.nvim"
   },
   ["cellular-automaton.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/cellular-automaton.nvim",
     url = "https://github.com/eandrju/cellular-automaton.nvim"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   cmp_luasnip = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["comment.nvim"] = {
     config = { "\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0" },
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/comment.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/comment.nvim",
     url = "https://github.com/numtostr/comment.nvim"
   },
   ["copilot.vim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
   ["dressing.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/dressing.nvim",
     url = "https://github.com/stevearc/dressing.nvim"
   },
-  ["exec-async.nvim"] = {
+  ["execAsync.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/exec-async.nvim",
-    url = "/Users/ipad/Projects/exec-async.nvim"
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/execAsync.nvim",
+    url = "https://github.com/ceceppa/execAsync.nvim"
   },
   fzf = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/fzf",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/fzf",
     url = "https://github.com/junegunn/fzf"
   },
   gruvbox = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/gruvbox",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/gruvbox",
     url = "https://github.com/morhetz/gruvbox"
   },
   harpoon = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/harpoon",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
   },
   ["indent-blankline.nvim"] = {
     config = { "\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bibl\frequire\0" },
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
   ["inlay-hints.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/inlay-hints.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/inlay-hints.nvim",
     url = "https://github.com/simrat39/inlay-hints.nvim"
   },
   ["lazygit.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
     url = "https://github.com/kdheepak/lazygit.nvim"
   },
   ["lint.nvim"] = {
     config = { "\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tlint\frequire\0" },
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/lint.nvim",
-    url = "/Users/ipad/Projects/lint.nvim"
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/lint.nvim",
+    url = "https://github.com/ceceppa/lint.nvim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
   ["lsp_signature.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim",
     url = "https://github.com/ray-x/lsp_signature.nvim"
   },
   ["lspsaga.nvim"] = {
@@ -194,191 +194,206 @@ _G.packer_plugins = {
     load_after = {},
     loaded = true,
     needs_bufread = false,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim",
     url = "https://github.com/nvimdev/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["markdown-preview.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
     url = "https://github.com/williamboman/mason-lspconfig.nvim"
   },
   ["mason.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  neotest = {
+    config = { "\27LJ\2\n%\0\1\3\0\3\0\0046\1\0\0009\1\1\0019\1\2\1D\1\1\0\vgetcwd\afn\bvimç\1\1\0\b\0\v\1\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\t\0004\3\3\0006\4\0\0'\6\3\0B\4\2\0025\6\4\0005\a\5\0=\a\6\0063\a\a\0=\a\b\6B\4\2\0?\4\0\0=\3\n\2B\0\2\1K\0\1\0\radapters\1\0\1\radapters\0\bcwd\0\benv\1\0\1\aCI\2\1\0\4\16jestCommand\17yarn test --\benv\0\19jestConfigFile\20jest.config.cjs\bcwd\0\17neotest-jest\nsetup\fneotest\frequire\3€€À™\4\0" },
+    loaded = true,
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/neotest",
+    url = "https://github.com/nvim-neotest/neotest"
+  },
+  ["neotest-jest"] = {
+    loaded = true,
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/neotest-jest",
+    url = "https://github.com/nvim-neotest/neotest-jest"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
   },
   ["nvim-notify"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-notify",
     url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-spectre"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-spectre",
     url = "https://github.com/windwp/nvim-spectre"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-treesitter-context"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
   },
   ["nvim-ts-autotag"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["phpactor.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/phpactor.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/phpactor.nvim",
     url = "https://github.com/gbprod/phpactor.nvim"
   },
   ["phpfmt.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/phpfmt.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/phpfmt.nvim",
     url = "https://github.com/yuchanns/phpfmt.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["projects.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/projects.nvim",
-    url = "/Users/ipad/Projects/projects.nvim"
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/projects.nvim",
+    url = "https://github.com/ceceppa/projects.nvim"
   },
   ["rainbow-delimiters.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/rainbow-delimiters.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/rainbow-delimiters.nvim",
     url = "https://github.com/HiPhish/rainbow-delimiters.nvim"
   },
   ["spelunker.vim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/spelunker.vim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/spelunker.vim",
     url = "https://github.com/kamykn/spelunker.vim"
   },
   ["telescope-ui-select.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/telescope-ui-select.nvim",
     url = "https://github.com/nvim-telescope/telescope-ui-select.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["ts-error-translator.nvim"] = {
     config = { "\27LJ\2\nE\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\24ts-error-translator\frequire\0" },
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/ts-error-translator.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/ts-error-translator.nvim",
     url = "https://github.com/dmmulroy/ts-error-translator.nvim"
   },
   ["tsc.nvim"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/tsc.nvim",
-    url = "/Users/ipad/Projects/tsc.nvim"
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/tsc.nvim",
+    url = "https://github.com/ceceppa/tsc.nvim"
   },
   undotree = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/undotree",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
   ["vim-fugitive"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-gitgutter"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
     url = "https://github.com/airblade/vim-gitgutter"
   },
   ["vim-php-cs-fixer"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/vim-php-cs-fixer",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/vim-php-cs-fixer",
     url = "https://github.com/stephpy/vim-php-cs-fixer"
   },
   ["vim-repeat"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/vim-repeat",
     url = "https://github.com/tpope/vim-repeat"
   },
   ["vim-sneak"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/vim-sneak",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/vim-sneak",
     url = "https://github.com/justinmk/vim-sneak"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/vim-surround",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
-  },
-  ["vim-test"] = {
-    loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/vim-test",
-    url = "https://github.com/vim-test/vim-test"
   },
   ["which-key.nvim"] = {
     config = { "\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0" },
     loaded = true,
-    path = "/Users/ipad/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    path = "/Users/alessandro.senese/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: aerial.nvim
-time([[Config for aerial.nvim]], true)
-try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vaerial\frequire\0", "config", "aerial.nvim")
-time([[Config for aerial.nvim]], false)
--- Config for: auto-session
-time([[Config for auto-session]], true)
-try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17auto-session\frequire\0", "config", "auto-session")
-time([[Config for auto-session]], false)
+-- Config for: ts-error-translator.nvim
+time([[Config for ts-error-translator.nvim]], true)
+try_loadstring("\27LJ\2\nE\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\24ts-error-translator\frequire\0", "config", "ts-error-translator.nvim")
+time([[Config for ts-error-translator.nvim]], false)
 -- Config for: lint.nvim
 time([[Config for lint.nvim]], true)
 try_loadstring("\27LJ\2\n2\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\tlint\frequire\0", "config", "lint.nvim")
 time([[Config for lint.nvim]], false)
+-- Config for: neotest
+time([[Config for neotest]], true)
+try_loadstring("\27LJ\2\n%\0\1\3\0\3\0\0046\1\0\0009\1\1\0019\1\2\1D\1\1\0\vgetcwd\afn\bvimç\1\1\0\b\0\v\1\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\t\0004\3\3\0006\4\0\0'\6\3\0B\4\2\0025\6\4\0005\a\5\0=\a\6\0063\a\a\0=\a\b\6B\4\2\0?\4\0\0=\3\n\2B\0\2\1K\0\1\0\radapters\1\0\1\radapters\0\bcwd\0\benv\1\0\1\aCI\2\1\0\4\16jestCommand\17yarn test --\benv\0\19jestConfigFile\20jest.config.cjs\bcwd\0\17neotest-jest\nsetup\fneotest\frequire\3€€À™\4\0", "config", "neotest")
+time([[Config for neotest]], false)
+-- Config for: aerial.nvim
+time([[Config for aerial.nvim]], true)
+try_loadstring("\27LJ\2\n4\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vaerial\frequire\0", "config", "aerial.nvim")
+time([[Config for aerial.nvim]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bibl\frequire\0", "config", "indent-blankline.nvim")
@@ -387,14 +402,14 @@ time([[Config for indent-blankline.nvim]], false)
 time([[Config for which-key.nvim]], true)
 try_loadstring("\27LJ\2\nD\0\0\2\0\4\0\t6\0\0\0009\0\1\0+\1\2\0=\1\2\0006\0\0\0009\0\1\0)\1,\1=\1\3\0K\0\1\0\15timeoutlen\ftimeout\6o\bvim\0", "config", "which-key.nvim")
 time([[Config for which-key.nvim]], false)
--- Config for: ts-error-translator.nvim
-time([[Config for ts-error-translator.nvim]], true)
-try_loadstring("\27LJ\2\nE\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\24ts-error-translator\frequire\0", "config", "ts-error-translator.nvim")
-time([[Config for ts-error-translator.nvim]], false)
 -- Config for: comment.nvim
 time([[Config for comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "comment.nvim")
 time([[Config for comment.nvim]], false)
+-- Config for: auto-session
+time([[Config for auto-session]], true)
+try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17auto-session\frequire\0", "config", "auto-session")
+time([[Config for auto-session]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-lspconfig ]]

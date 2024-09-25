@@ -2,8 +2,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 fish_add_path /opt/homebrew/opt/openjdk/bin
-set -gx ANDROID_SDK_ROOT /Users/ipad/Library/Android/sdk
-set -gx ANDROID_NDK_HOME /Users/ipad/Library/Android/sdk/ndk
+set -gx ANDROID_SDK_ROOT ~/Library/Android/sdk
+set -gx ANDROID_NDK_HOME ~/Library/Android/sdk/ndk
 alias tb:on "adb shell settings put secure enabled_accessibility_services com.google.android.marvin.talkback/com.google.android.marvin.talkback.TalkBackService"
 alias tb:off "adb shell settings put secure enabled_accessibility_services com.android.talkback/com.google.android.marvin.talkback.TalkBackService"
 alias reverse "adb reverse tcp:8081 tcp:8081"
@@ -53,14 +53,14 @@ set -g fish_prompt_pwd_dir_length 0
 set -g theme_newline_cursor yes
 set -g theme_newline_prompt " "
 
-function nvm
-    bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
-end
+# function nvm
+#     bass source (brew --prefix nvm)/nvm.sh --no-use ';' nvm $argv
+# end
 
 set -x NVM_DIR ~/.nvm
-nvm use default --silent
+nvm use 18 --silent
 
-set -x ANDROID_HOME /Users/ipad/Library/Android/sdk
+set -x ANDROID_HOME ~/Library/Android/sdk
 
 set -gx PATH $HOME/.cargo/bin $PATH
 set -gx PATH '/Users/ipad/.jenv/shims' $PATH
@@ -70,9 +70,10 @@ set -gx JENV_LOADED 1
 set -e JAVA_HOME
 set -e JDK_HOME
 set -gx FZF_DEFAULT_COMMAND 'ag -p ~/.gitignore -g ""'
-source '/Users/ipad/.jenv/libexec/../completions/jenv.fish'
+# source '/Users/ipad/.jenv/libexec/../completions/jenv.fish'
 
-jenv refresh-plugins > /dev/null 2>&1
+# jenv refresh-plugins > /dev/null 2>&1
+
 function jenv
     set command $argv[1]
     set -e argv[1]
@@ -84,9 +85,26 @@ function jenv
             command jenv "$command" $argv
     end
 end
-source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_functions.d/chruby.fish
-source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_conf.d/chruby_auto.fish
-chruby ruby-3.2.1
+
+function search
+  if test -z $argv
+      echo "Usage: search <pattern>"
+  else
+    echo "Searching for $argv"
+    set -l initial_dir (pwd)
+
+    for dir in */
+        echo "Searching in $dir"
+        cd "$initial_dir/$dir"
+        rg $argv
+        cd "$initial_dir"
+    end
+  end
+end
+
+# source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_functions.d/chruby.fish
+# source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_conf.d/chruby_auto.fish
+# chruby ruby-3.2.1
 
 alias vim="nvim"
 alias vi="nvim"
@@ -100,3 +118,8 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+set PATH $HOME/.jenv/bin $PATH
+status --is-interactive; and jenv init - | source
+status --is-interactive; and jenv init - | source
+
+envsource ~/.env

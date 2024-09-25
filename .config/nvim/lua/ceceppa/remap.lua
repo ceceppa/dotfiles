@@ -53,8 +53,24 @@ vim.api.nvim_set_keymap('n', "<leader>y(", 'vi(y',
 vim.api.nvim_set_keymap('n', "<leader>y{", 'vi{y',
     { noremap = true, silent = true, desc = '@: Copy content inside curly brackets {' })
 vim.api.nvim_set_keymap('n', "<C-S-D>", 'yyp', { noremap = true, silent = true, desc = '@: Duplicate ine' })
-vim.api.nvim_set_keymap('n', "<leader>v$", 'v$y',
+vim.api.nvim_set_keymap('n', "<leader>y$", 'v$y',
     { noremap = true, silent = true, desc = '@: Copy content from cursor until end of line' })
+
+local function yank_all()
+    -- Save the current cursor position
+    local cursor_pos = vim.fn.getpos(".")
+    
+    -- Yank the entire buffer
+    vim.cmd("normal! ggVGy")
+    
+    -- Restore the cursor position
+    vim.fn.setpos('.', cursor_pos)
+    
+    print("All text yanked to clipboard!")
+end
+
+-- Map <leader>ya to the yank_all function
+vim.keymap.set('n', '<leader>ya', yank_all, { noremap = true, silent = true, desc = "Yank all text" })
 
 -- Select content within symbols
 vim.api.nvim_set_keymap('n', "<leader>v'", "vi'",
@@ -269,3 +285,14 @@ vim.keymap.set("v", "<C-S-O>", function()
     vim.cmd.normal { '"zy', bang = true }
     search_selection_on_google(vim.fn.getreg("z"))
 end, { desc = '@: Search selection on Google' })
+
+local is_copilot_enabled = false
+
+vim.keymap.set('n', "<leader>co", function()
+    is_copilot_enabled = not is_copilot_enabled
+
+    vim.g.copilot_filetypes = {
+        ["*"] = is_copilot_enabled,
+    }
+    print("Copilot globally enabled: " .. string.format("%s", is_copilot_enabled)) 
+end, { desc = '@: Toggle copilot on all files' })

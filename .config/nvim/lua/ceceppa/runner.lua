@@ -23,8 +23,30 @@ else
 end
 
 local function command_picker()
+    local function do_run_cmmand(command_to_run, then_callback)
+        if command_to_run and string.len(command_to_run) > 0 then
+            local command = vim.split(command_to_run, " ")[1]
+            local ok = pcall(vim.fn.executable, command)
+            if not ok then
+                vim.notify("Command not found: " .. command, vim.log.levels.ERROR)
+
+                return
+            end
+
+            utils.exec_async(command_to_run, then_callback)
+        else
+            vim.notify("No command to run", vim.log.levels.ERROR)
+        end
+
+        -- if vales is not in the history, add its
+        if not vim.tbl_contains(commands_history, command_to_run) then
+            table.insert(commands_history, command_to_run)
+            save_command(commands_history)
+        end
+    end
+
     pickers.new({}, {
-        prompt_title = "Commands",
+        prompt_title = "Command to run",
         finder = finders.new_table {
             results = commands_history,
         },
@@ -39,24 +61,7 @@ local function command_picker()
 
                 local command_to_run = selection and selection.value or prompt
 
-                if command_to_run and string.len(command_to_run) > 0 then
-                    local command = vim.split(command_to_run, " ")[1]
-                    local ok = pcall(vim.fn.executable, command)
-                    if not ok then
-                        vim.notify("Command not found: " .. command, vim.log.levels.ERROR)
-
-                        return
-                    end
-
-                    utils.exec_async(command_to_run, then_callback)
-                else
-                    vim.notify("No command to run", vim.log.levels.ERROR)
-                end
-
-                if not selection then
-                    table.insert(commands_history, command_to_run)
-                    save_command(commands_history)
-                end
+                do_run_cmmand(command_to_run, then_callback)
             end
 
             local remove_command_from_history = function()
@@ -86,6 +91,14 @@ local function command_picker()
             map("i", "<CR>", run_command)
             map("n", "<CR>", run_command)
             map("i", "<S-CR>", run_command_and_log)
+            map("i", "<C-CR>", function()
+                local picker = action_state.get_current_picker(prompt_bufnr)
+                local prompt = picker:_get_prompt()
+
+                do_run_cmmand(prompt)
+
+                actions.close(prompt_bufnr)
+            end)
             map("n", "<S-CR>", run_command_and_log)
             map("i", "<C-x>", remove_command_from_history)
 

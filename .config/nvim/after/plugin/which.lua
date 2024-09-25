@@ -1,5 +1,9 @@
 local wk = require("which-key")
 
+wk.setup({
+    notify = false
+})
+
 wk.register({
     c = {
         name = "Code",

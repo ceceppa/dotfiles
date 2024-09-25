@@ -134,6 +134,7 @@ M.execute_command = function(command, description, args, then_callback, should_r
         args = args,
         on_stdout = function(_, data)
             table.insert(output, data)
+            table.insert(_latest_output, data)
         end,
         on_stderr = function(_, data)
             if not string.find(data, "packageManager") and not string.find(data, "Corepack must") then
@@ -232,5 +233,9 @@ end
 vim.api.nvim_create_user_command("ExecAsyncLog", function()
     show_popup("Latest Async Output", _latest_output)
 end, { desc = "Show the latest async output in a popup", force = true })
+
+vim.api.nvim_create_user_command("ExecAsyncShowLog", function()
+    show_popup("Async Output", _latest_output)
+end, { desc = "Show the latest async output in the quickfix list", force = true })
 
 return M

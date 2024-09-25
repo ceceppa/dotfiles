@@ -14,12 +14,13 @@ require("mason").setup({
 
 require("mason-lspconfig").setup({
     ensure_installed = {
+        "lua_ls",
         "bashls",
         "cssls",
         "html",
         "jsonls",
         "rust_analyzer",
-        "tsserver",
+        "ts_ls",
         "vimls",
         "yamlls",
         "phpactor",
@@ -195,7 +196,7 @@ lspconfig.lua_ls.setup({
     }
 })
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
     on_attach = function(c, b)
         inlay.on_attach(c, b)
     end,

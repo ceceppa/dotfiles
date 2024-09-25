@@ -138,7 +138,7 @@ return require('packer').startup(function(use)
 
     -- Local
     use {
-        '~/Projects/tsc.nvim',
+        'ceceppa/tsc.nvim',
         requires = {
             { 'rcarriga/nvim-notify' },
         }
@@ -163,19 +163,6 @@ return require('packer').startup(function(use)
     })
 
     use 'stephpy/vim-php-cs-fixer'
-
-    -- use {
-    --     "LintaoAmons/bookmarks.nvim",
-    --     tag = "v0.5.3",
-    --     config = function()
-    --         require("bookmarks").setup({
-    --             json_db_path = vim.fs.normalize(vim.fn.stdpath("config") .. "/bookmarks.db.json"),
-    --             signs = {
-    --                 mark = { icon = "", color = "grey" },
-    --             },
-    --         })
-    --     end
-    -- }
 
     use {
         'gbprod/phpactor.nvim',
@@ -207,17 +194,38 @@ return require('packer').startup(function(use)
     use 'kdheepak/lazygit.nvim'
     use 'kamykn/spelunker.vim'
 
-    use '~/Projects/exec-async.nvim'
+    use 'ceceppa/execAsync.nvim'
 
     use {
-        '~/Projects/lint.nvim',
+        'ceceppa/lint.nvim',
         config = function()
             require('lint').setup()
         end
     }
 
-    use '~/Projects/projects.nvim'
-    use 'vim-test/vim-test'
+    use 'ceceppa/projects.nvim'
+
+    use({
+        'nvim-neotest/neotest',
+        requires = {
+            'nvim-neotest/neotest-jest',
+            'nvim-neotest/nvim-nio'
+        },
+        config = function()
+            require('neotest').setup({
+                adapters = {
+                    require('neotest-jest')({
+                        jestCommand = "yarn test --",
+                        jestConfigFile = "jest.config.cjs",
+                        env = { CI = true },
+                        cwd = function(path)
+                            return vim.fn.getcwd()
+                        end,
+                    }),
+                }
+            })
+        end
+    })
 
     vim.keymap.set('n', '<leader>ps', ':so<CR>:PackerSync<CR>')
 end)
