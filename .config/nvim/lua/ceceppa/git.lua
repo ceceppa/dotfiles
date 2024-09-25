@@ -187,6 +187,8 @@ local function maybe_write_and_close_window()
             table.insert(params, extra_params)
         end
 
+        print("Committing with message: " .. vim.inspect(params))
+
         execute_git_command("commit with message", params,
             function()
                 git_push(input[2])
