@@ -88,6 +88,7 @@ end
 function git_push(input)
     local push_params = get_push_or_commit_params(input, true)
 
+    print("Pushing with params: " .. vim.inspect(push_params))
     execute_git_command('push', push_params)
 end
 
