@@ -88,7 +88,7 @@ end
 function git_push(input)
     local push_params = get_push_or_commit_params(input, true)
 
-    print("Pushing with params: " .. vim.inspect(push_params))
+    table.insert(push_params, 1, 'push')
     execute_git_command('push', push_params)
 end
 
@@ -187,8 +187,6 @@ local function maybe_write_and_close_window()
         if extra_params then
             table.insert(params, extra_params)
         end
-
-        print("Committing with message: " .. vim.inspect(params))
 
         execute_git_command("commit with message", params,
             function()
