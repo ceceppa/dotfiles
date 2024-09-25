@@ -34,7 +34,7 @@ function get_commit_message()
 end
 
 local function get_push_or_commit_params(input, can_force)
-    local git_params = { 'push' }
+    local git_params = {}
 
     if not input then
         return git_params
@@ -56,6 +56,10 @@ local function get_push_or_commit_params(input, can_force)
         else
             return '--no-verify'
         end
+    end
+
+    if not can_force then
+        return nil
     end
 
     return git_params
@@ -176,9 +180,14 @@ local function maybe_write_and_close_window()
 
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-o>:wq<CR>', true, true, true), 'n', true)
 
+        local params = { 'commit', '-m', input[1] }
         local extra_params = get_push_or_commit_params(input[2], false)
 
-        execute_git_command("commit with message", { 'commit', '-m', input[1], extra_params },
+        if extra_params then
+            table.insert(params, extra_params)
+        end
+
+        execute_git_command("commit with message", params,
             function()
                 git_push(input[2])
             end)
