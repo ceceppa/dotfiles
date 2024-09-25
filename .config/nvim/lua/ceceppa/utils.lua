@@ -126,6 +126,7 @@ end
 M.execute_command = function(command, description, args, then_callback, should_return, silent)
     local output = {}
 
+    print(vim.inspect(args))
     local on_complete = show_notification(command .. " " .. table.concat(args, ' '), description, silent)
     local should_ignore_error = false
 
