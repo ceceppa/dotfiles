@@ -93,6 +93,7 @@ require("telescope").load_extension("notify")
 
 -- Project
 vim.keymap.set('n', '<leader>pf', ':Telescope find_files hidden=true<CR>', { desc = '@: Find files' })
+vim.keymap.set('n', '<M-S-p>', function() builtin.find_files({ hidden = true }) end, { desc = '@: Find files' })
 vim.keymap.set('n', '<D-p>', function() builtin.find_files({ hidden = true }) end, { desc = '@: Find files' })
 vim.keymap.set('n', '<leader>pg', builtin.git_files, { desc = '@: Search in git files' })
 

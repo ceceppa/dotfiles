@@ -88,19 +88,21 @@ end
 
 function search
   if test -z $argv
-      echo "Usage: search <pattern>"
+      echo "usage: search <pattern>"
   else
-    echo "Searching for $argv"
+    echo "searching for $argv"
     set -l initial_dir (pwd)
 
     for dir in */
-        echo "Searching in $dir"
+        echo "searching in $dir"
         cd "$initial_dir/$dir"
-        rg $argv
+        rg --glob '!*.test.*' $argv
         cd "$initial_dir"
     end
   end
 end
+
+alias s=search
 
 # source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_functions.d/chruby.fish
 # source /opt/homebrew/Cellar/chruby-fish/1.0.0/share/fish/vendor_conf.d/chruby_auto.fish
@@ -121,5 +123,28 @@ end
 set PATH $HOME/.jenv/bin $PATH
 status --is-interactive; and jenv init - | source
 status --is-interactive; and jenv init - | source
+
+function fzf_cd --description 'Fuzzy change to direct children of ~/Projects without preview'
+    if not type -q fzf
+        echo "fzf is not installed. Please install it first."
+        return 1
+    end
+
+    set -l projects_dir ~/Projects
+
+    if not test -d $projects_dir
+        echo "~/Projects directory does not exist."
+        return 1
+    end
+
+    set -l dir (command ls -d $projects_dir/*/ 2>/dev/null | sed "s|^$projects_dir/||" | sed 's|/$||' | fzf --height 40% --layout=reverse)
+    
+    if test -n "$dir"
+        cd "$projects_dir/$dir"
+    end
+end
+
+# Add a key binding (Ctrl+Alt+F) to trigger the function
+alias p='fzf_cd'
 
 envsource ~/.env

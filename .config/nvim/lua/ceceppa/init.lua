@@ -29,7 +29,7 @@ vim.cmd("highlight GitGutterChange guifg=#f0dbff ctermfg=3")
 vim.cmd("highlight GitGutterDelete guifg=#ffa8a8 ctermfg=1")
 
 vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap("i", "<C-.>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.api.nvim_set_keymap("i", "<C-c>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 vim.g.copilot_filetypes = {
     ["*"] = false,
@@ -40,7 +40,7 @@ vim.g.copilot_filetypes = {
 
 vim.o.guicursor = 'n-v-i-sm:block,c-ci-ve-i:ver25,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor'
 
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 
 utils.add_event('ProjectOpened', function() lint.init(100) end)

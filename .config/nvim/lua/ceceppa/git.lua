@@ -106,10 +106,10 @@ vim.keymap.set('n', '<leader>gi', function() git_pull() end, { desc = '@: Git pu
 vim.keymap.set('n', '<leader>go', function() git_push() end, { desc = '@: Git push' });
 vim.keymap.set('n', '<leader>gO', function() git_push('~') end, { desc = '@: Git push --no-verify' });
 vim.keymap.set('n', '<leader>gF', function() git_push('?') end, { desc = '@: Git push --force --no-verify' });
-vim.keymap.set('n', '<leader>gr', function()
+vim.keymap.set('n', '<leader>gU', function()
     local repo_name = git_get_main_repo_name()
 
-    execute_git_command('pull rebase ' .. repo_name, { 'pull', 'rebase', repo_name })
+    execute_git_command('pull rebase ' .. repo_name, { 'rebase', repo_name })
 end, { desc = '@: Git pull origin main branch' });
 vim.keymap.set('n', '<leader>gu', function()
     local repo_name = git_get_main_repo_name()
@@ -134,10 +134,24 @@ vim.keymap.set('n', '<leader>gg', ':LazyGit<CR>', { desc = '@: Open LazyGit' });
 vim.keymap.set('n', '<leader>gh', ':LazyGitFilterCurrentFile<CR>', { desc = '@: Git file history' });
 vim.keymap.set('n', '<leader>gl', ':LazyGitFilter<CR>', { desc = '@: Git history' });
 vim.keymap.set('n', '<leader>gr', function()
-    local command =
-    [[!git remote -v | head -n 1 | awk -F "@" '{print $2}' | awk -F " " '{print $1}' | sed 's/:/\//g' | sed 's/.git//g' | awk '{print "http://"$1}' | xargs open]]
-    vim.cmd(command)
-end, { desc = '@: Git open remote repository in Browser' });
+    local handle = io.popen([[
+        git remote -v | head -n 1 | awk '{print $2}' | 
+        sed -E 's#(git@|https://)#https://#' |
+        sed -E 's#\.git$##'
+    ]])
+    if handle then
+        local result = handle:read("*a")
+        handle:close()
+        result = result:gsub("%s+", "") -- Remove any whitespace
+        if result ~= "" then
+            vim.fn.system({"open", result})
+        else
+            print("Failed to get repository URL")
+        end
+    else
+        print("Failed to execute git command")
+    end
+end, { desc = '@: Git open remote repository in Browser' })
 
 vim.keymap.set('n', '<leader>gc', ':Telescope git_commits<CR>', { desc = '@: Git commits' });
 
@@ -206,7 +220,7 @@ local function git_stash_with_name()
 end
 
 
-vim.keymap.set('n', '<C-;>', function()
+vim.keymap.set('n', ';', function()
     maybe_write_and_close_window()
 end, { desc = '@: Git: Write commit message and push' });
 

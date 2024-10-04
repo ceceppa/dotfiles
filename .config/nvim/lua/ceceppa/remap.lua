@@ -8,7 +8,7 @@ vim.api.nvim_set_keymap('n', '<C-S-p>', 'Vp', { noremap = true, desc = 'Replace 
 
 -- Clear content within matches
 vim.api.nvim_set_keymap('n', '<C-x>', 'ciw', { noremap = true, desc = '@: Clear word under cursor' })
-vim.api.nvim_set_keymap('n', "<C-'>", "ci'",
+vim.api.nvim_set_keymap('n', "<M-'>", "ci'",
     { noremap = true, silent = true, desc = '@: Clear content inside single quotes' })
 vim.api.nvim_set_keymap('n', "<C-2>", 'ci"',
     { noremap = true, silent = true, desc = '@: Clear content inside double quotes' })
@@ -59,13 +59,13 @@ vim.api.nvim_set_keymap('n', "<leader>y$", 'v$y',
 local function yank_all()
     -- Save the current cursor position
     local cursor_pos = vim.fn.getpos(".")
-    
+
     -- Yank the entire buffer
     vim.cmd("normal! ggVGy")
-    
+
     -- Restore the cursor position
     vim.fn.setpos('.', cursor_pos)
-    
+
     print("All text yanked to clipboard!")
 end
 
@@ -116,8 +116,28 @@ vim.api.nvim_set_keymap('n', "<C-S-i>", 'wi', { noremap = true, silent = true, d
 vim.api.nvim_set_keymap('n', '<leader>w=', ':vertical resize 120<CR>',
     { noremap = true, desc = '@: Equalize windows vertical size' })
 vim.api.nvim_set_keymap('n', '<leader>wv', '<C-w>v', { noremap = true, desc = '@: Equalize windows vertical size' })
-vim.api.nvim_set_keymap('n', '<C-n>', '<C-w>w', { noremap = true, desc = '@: Focus next window' })
-vim.api.nvim_set_keymap('n', '<C-p>', '<C-w>W', { noremap = true, desc = '@: Focus previous window' })
+
+local function go_to_window_or_tmux(move, tmux_move)
+    local current_window = vim.fn.winnr()
+
+    vim.cmd('wincmd ' .. move)
+
+    local next_window = vim.fn.winnr()
+
+    if current_window == next_window then
+        vim.fn.system('tmux select-pane -t :.' .. tmux_move)
+    end
+end
+
+vim.keymap.set('n', '<C-n>', function()
+    go_to_window_or_tmux('w', '+')
+end, { noremap = true, desc = '@: Focus next window' })
+
+vim.keymap.set('n', '<C-p>', function()
+    go_to_window_or_tmux('W', '-')
+end, { noremap = true, desc = '@: Focus next window' })
+
+-- vim.api.nvim_set_keymap('n', '<C-p>', '<C-w>W', { noremap = true, desc = '@: Focus previous window' })
 vim.keymap.set({ "n", "i" }, "<C-f><C-f>", function()
     -- get filetype
     local filetype = vim.bo.filetype
@@ -128,18 +148,23 @@ vim.keymap.set({ "n", "i" }, "<C-f><C-f>", function()
         vim.lsp.buf.format()
     end
 end, { desc = '@: Format file' })
-vim.api.nvim_set_keymap('n', '<leader>wm', ':lua MaximizeCurrentWindow()<CR>', { noremap = true, silent = true })
 
-function MaximizeCurrentWindow()
-    -- Store the current window configuration
+vim.keymap.set('n', '<leader>tm', function()
+    vim.fn.system('tmux resize-pane -Z')
+end, { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>wm', function()
     local win_config = vim.fn.winsaveview()
+    local win = vim.fn.winnr('$')
 
-    -- Maximize the current window
-    vim.cmd('only')
+    if win == 1 then
+        vim.fn.system('tmux resize-pane -Z')
+    else
+        vim.cmd('only')
+    end
 
-    -- Restore the previous window configuration
     vim.fn.winrestview(win_config)
-end
+end, { noremap = true, silent = true })
 
 -- Move lines when selected
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = '@: Move selection down' })
@@ -294,5 +319,5 @@ vim.keymap.set('n', "<leader>co", function()
     vim.g.copilot_filetypes = {
         ["*"] = is_copilot_enabled,
     }
-    print("Copilot globally enabled: " .. string.format("%s", is_copilot_enabled)) 
+    print("Copilot globally enabled: " .. string.format("%s", is_copilot_enabled))
 end, { desc = '@: Toggle copilot on all files' })

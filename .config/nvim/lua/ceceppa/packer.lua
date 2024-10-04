@@ -227,5 +227,12 @@ return require('packer').startup(function(use)
         end
     })
 
+    use {
+        'gsuuon/note.nvim',
+        config = function()
+            require('note').setup()
+        end
+    }
+
     vim.keymap.set('n', '<leader>ps', ':so<CR>:PackerSync<CR>')
 end)
